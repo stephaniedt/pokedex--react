@@ -1,21 +1,11 @@
-import React,{ useState }  from 'react';
-import axios from 'axios';
+import React from 'react';
 
-export default function  SearchBar() {
+export default function  SearchBar({pokemon = "", ...props}) {
 
-  const [pokemon, setPokemon] = useState('');
-
-  function SearchPokemon() {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${ pokemon }`)
-    .then(response => {
-      let searchResult = response.data 
-      console.log(searchResult);
-  })
-  }
   return (
     <>
-    <input placeholder="Nome do pokemon" value={ pokemon } onChange = {e => setPokemon(e.target.value)}/> 
-    <button type="submit" onClick = {SearchPokemon}> Pokebola, vai! </button>
+    <input type="text" placeholder="Nome do pokemon" value={ props.pokemon} onChange={ props.searchInputValue }/> 
+    <button type="submit" onClick = {props.searchPokemon}> Pokebola, vai! </button>
     </>
   )
 }

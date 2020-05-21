@@ -8,39 +8,58 @@ import {Card, CardName, CardImg} from "./Card";
 
 function App() {
   
-  
-  
   const [list, setList] = useState ([]); 
-  // list = array de objetos => [{name: bulbassaur, url:https://pokeapi.co/api/v2/pokemon/1/},{}...] 
-  // => get na list[i].url retorna um objeto e as imagens estão na key .sprites => {...... sprites: {...front_default:  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"}}
-
+  const [search, setSearch] = useState (""); 
+  
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon')
+      
+      axios.get('https://pokeapi.co/api/v2/pokemon/')
+      .then(response => {
+        setList(response.data.results);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+  }, [setList]);
+
+  
+
+  function searchPokemon() {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`)
     .then(response => {
-      setList(response.data.results);
+      setList(response.data.forms)
     })
     .catch(err => {
       console.log(err)
     })
-  });
+  }
+
+
+  const searchInputValue = (e) => { 
+    setSearch(e.target.value);
+  }
+
+
 
 
   return (
     <Container>
       <Header title="Pokedéx"/>
-      <SearchBar />
-      <div>
+      <SearchBar 
+        searchInputValue= { searchInputValue } 
+        searchPokemon= { searchPokemon } 
+        pokemon={search} 
+      />
+
       {list.map((pokemon, index) => {
         return (
           <Card key={index}>
-            <CardName name={pokemon.name}/>   
-            <CardImg url={pokemon.url} alt={pokemon.name}/>  
-          </Card>    
+          <CardName name={pokemon.name}/>   
+          <CardImg url={pokemon.url} alt={pokemon.name}/>  
+        </Card> 
         );
       })}
-      </div>
-        
-
     </Container>
   )
 

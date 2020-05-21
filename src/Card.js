@@ -15,11 +15,11 @@ export function CardImg(props) {
     axios.get(props.url)
     .then(response => {
       setImg(response.data.sprites);
-    })
+    }, [])
     .catch(err => {
       console.log(err)
     })
-  });
+  }, [setImg, props.url]);
 
 return <img src={img.front_default} alt={props.alt} />;
 }
