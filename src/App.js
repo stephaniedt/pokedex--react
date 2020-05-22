@@ -13,7 +13,7 @@ function App() {
   
   useEffect(() => {
       
-      axios.get('https://pokeapi.co/api/v2/pokemon/')
+      axios.get('https://pokeapi.co/api/v2/pokemon?limit=100')
       .then(response => {
         setList(response.data.results);
       })
@@ -44,23 +44,27 @@ function App() {
 
 
   return (
-    <Container>
-      <Header title="Pokedéx"/>
-      <SearchBar 
-        searchInputValue= { searchInputValue } 
-        searchPokemon= { searchPokemon } 
-        pokemon={search} 
-      />
+    <>
+      <Header title="Pokédex"/>
+      <Container noBorder> 
+        <SearchBar 
+          searchInputValue= { searchInputValue } 
+          searchPokemon= { searchPokemon } 
+          pokemon={search} 
+          />
+      </Container>
 
-      {list.map((pokemon, index) => {
-        return (
-          <Card key={index}>
-          <CardName name={pokemon.name}/>   
-          <CardImg url={pokemon.url} alt={pokemon.name}/>  
-        </Card> 
-        );
-      })}
-    </Container>
+        <Container>
+        {list.map((pokemon, index) => {
+          return (
+            <Card key={index}>
+            <CardName name={pokemon.name}/>   
+            <CardImg url={pokemon.url} alt={pokemon.name}/>  
+          </Card> 
+          );
+        })}
+      </Container>
+    </>
   )
 
 }
