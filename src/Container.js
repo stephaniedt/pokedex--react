@@ -9,6 +9,7 @@ const Container = styled.div `
       margin: 10px 10%;
       justify-content: center;
       padding: 1.5em;
+      
 `
 
 export default Container;

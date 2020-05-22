@@ -13,7 +13,7 @@ function App() {
   
   useEffect(() => {
       
-      axios.get('https://pokeapi.co/api/v2/pokemon?limit=100')
+      axios.get('https://pokeapi.co/api/v2/pokemon?limit=80')
       .then(response => {
         setList(response.data.results);
       })

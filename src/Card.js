@@ -15,12 +15,13 @@ export const Card = styled.div `
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      box-shadow: 0 8px 6px -6px black;
+      box-shadow: 0 9px 6px -6px black;
+      background-color: whitesmoke;
       
 `
 
 const Title = styled.h5 `
-      
+      font-family: 'Roboto', sans-serif;
 ` 
 
 export function CardName(props) {

@@ -7,7 +7,7 @@ import styled from "styled-components";
     background-color: black;
     color: white;
     font-size: 25px;
-    padding-left: 90px;
+    padding-left: 10%;
     font-weight: 900;
     margin-bottom: 30px; 
     padding-top: 10px;
