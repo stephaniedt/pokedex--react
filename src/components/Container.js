@@ -2,8 +2,8 @@
 import styled from "styled-components";
 
 
-const Container = styled.div `
-    border: ${props => (props.noBorder ? "0" : "1px solid  #282c3484")};
+const Container = styled.div`
+      border: ${({ noBorder }) => (noBorder ? "0" : "1px solid  #282c3484")};
       display: flex;
       flex-flow: wrap;
       margin: 10px 10%;
@@ -11,5 +11,4 @@ const Container = styled.div `
       padding: 1.5em;
       
 `
-
 export default Container;
