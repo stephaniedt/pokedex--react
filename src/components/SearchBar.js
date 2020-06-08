@@ -17,12 +17,12 @@ const Msg = styled.div`
 `;
 
 
-export default function SearchBar(props) {
+export default function SearchBar({pokemon, handleInputValue, msg}) {
     
   return (
     <Form>
-      <Input type="text" placeholder="Nome do pokemon" value={props.pokemon} onChange={props.handleInputValue} />
-      <Msg>{props.msg}</Msg>
+      <Input type="text" placeholder="Nome do pokemon" value={pokemon} onChange={handleInputValue} />
+      <Msg>{msg}</Msg>
     </Form>
   )
 }
